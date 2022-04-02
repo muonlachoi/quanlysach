@@ -1,0 +1,205 @@
+$primary: #fa4c53;
+@mixin flexbox($align: flex-start, $justify: flex-start, $flex-derection: row, $wrap: nowrap) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $flex-derection;
+    flex-wrap: $wrap;
+}
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+.signup {
+    width: 50%;
+    max-height: 100%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgb(black, 0.1);
+
+    @include flexbox(flex-start, space-between, row, wrap);
+    &_content {
+        margin: 50px;
+        width: 100%;
+    }
+
+    &_heading {
+        font-weight: bold;
+        font-size: 45px;
+        margin-bottom: 30px;
+    }
+    &_form {
+        &_lable {
+            color: rgb(51, 45, 45);
+            display: inline-block;
+            margin-bottom: 10px;
+            transform: translateX(10px);
+            cursor: pointer;
+        }
+        &_input {
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            background-color: #c4e2eb;
+            outline: none;
+            width: calc(100% - 10px);
+            display: block;
+        }
+        &_row {
+            @include flexbox(stretch, space-between);
+            margin-bottom: 20px;
+            .signup_form_group {
+                width: 50%;
+            }
+        }
+        &_button {
+            margin-top: 20px;
+            @include size(150px, 50px);
+            border-radius: 15px;
+            border: 0;
+            color: white;
+            background: linear-gradient(180deg, #4aa886 0%, #00ffa1 100%);
+            cursor: pointer;
+            transition: all 0.15s linear;
+            margin-bottom: 65px;
+            box-shadow: 0 4px 0 0 rgb(#062e15, 1);
+            &:hover {
+                background: linear-gradient(180deg, #1bffff 0%, #00ffa1 100%);
+                color: #420202;
+            }
+            &:active {
+                transform: translateY(4px);
+                box-shadow: 0 0 0 0;
+            }
+        }
+    }
+    &_already {
+        text-align: center;
+        margin-top: -40px;
+        a {
+            text-decoration: none;
+            color: #fa4c53;
+        }
+    }
+}
+.input_style {
+    color: #000000;
+    transition: all 0.2s linear;
+    &::-webkit-input-placeholder {
+        color: black;
+    }
+    &:focus {
+        border-color: rgb(12, 74, 78);
+        box-shadow: 0 0 0 2px #23d3bb;
+    }
+}
+.alert-danger {
+    border-radius: 10px;;
+    font-size: 12px;
+    width: calc(100% - 10px);
+    margin-top: 5px;
+}
+
+@media screen and(max-width:1279px) {
+    
+    .signup{
+        &_content{
+            margin: 20px;
+            width: 100%;
+        }
+        &_form{
+            &_row{
+                flex-direction: column;
+                margin-bottom: 0;
+                .signup_form_group{
+                    width: 100%;
+                    margin-bottom: 5px;
+                }
+            }
+            
+        }
+    }
+}
+
+@media screen and(min-width:1024px) and (max-width:1279) {
+    .signup{
+       
+        &_content{
+            margin: 20px;
+            width: 100%; 
+        }
+        &_heading {
+            font-weight: bold;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        &_form{
+            &_lable{
+                margin-bottom: 8px;
+            }
+            &_group{
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            &_input{
+                margin-bottom: 10px;
+                padding: 12px 10px 12px 15px;
+            }
+            &_button{
+                margin-top: 10px;
+                border-radius: 14px;
+                @include size(130px,45px)
+            }
+        }
+        
+    }
+}
+@media screen and(max-width:479px) and(max-width:1023px) {
+    
+    .signup{
+        width: 90%;
+        
+        &_content{
+            margin: 20px;
+            width: 100%;
+        }
+        &_heading {
+            font-weight: bold;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+        &_form{
+            &_lable{
+                margin-bottom: 4px;
+            }
+            &_group{
+                width: 100%;
+                margin-bottom: 0px;
+            }
+            &_input{
+                width: 100%;
+                padding: 10px 10px 10px 15px;
+            }
+            &_button{
+                margin-top: 10px;
+                border-radius: 14px;
+                @include size(120px,40px)
+            }
+            
+        }
+        &_already{
+            a{
+                display: inline-block;
+            }
+        }
+        
+    }
+    .alert-danger{
+        padding: 10px 10px 10px 15px;
+    }
+}

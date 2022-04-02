@@ -1,0 +1,37 @@
+<div class="signup container mb-5">
+    <div class="signup_content">
+        <h1 class="signup_heading" >Sign Up</h1>
+        <form class="signup-form" #formRegister="ngForm" (submit)="onSubmit(formRegister)">
+            <div class="signup_form_row">
+                <div class="signup_form_group">
+                    <label for="name" class="signup_form_lable">Name</label>
+                    <input #name="ngModel" type="text" id="name" [(ngModel)]="users.name" name="name"  class="signup_form_input input_style" placeholder="Enter your name" required>
+                    <div class="alert alert-danger" *ngIf="name.invalid &&(name.dirty||name.touched)">  
+                        <strong *ngIf="formRegister.submitted ||name.touched || name.dirty && name.errors?.['required']">Please enter your name</strong>
+                    </div>
+                </div>
+                <div class="signup_form_group">
+                    <label for="email" class="signup_form_lable">Email</label>
+                    <input #email="ngModel" type="email" id="email" [(ngModel)]="users.email" name="email"  class="signup_form_input input_style" placeholder="Enter your email" required>
+
+                    <div class="alert alert-danger" *ngIf="email.invalid &&(email.dirty||email.touched)" >  
+                        <strong *ngIf="formRegister.submitted||email.touched || email.dirty && email.errors?.['required']">Please enter your email</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="signup_form_group">
+                <label for="pass" class="signup_form_lable">Password</label>
+                <input #pass="ngModel" type="password" id="pass" [(ngModel)]="users.password" name="pass" required  class="signup_form_input input_style" placeholder="Enter your password">
+                <div class="alert alert-danger" *ngIf="pass.invalid &&(pass.dirty||pass.touched)">  
+                    <strong *ngIf="formRegister.submitted ||pass.touched || pass.dirty && pass.errors?.['required']">Please enter your password</strong>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+            <button class="signup_form_button" type="submit">
+                <h6>Sign Up</h6>
+            </button>
+            </div>
+            <p class="signup_already">Đã có tài khoản? <a [routerLink]="['/login']" class="h6">Login</a></p>
+        </form>
+    </div>
+</div>

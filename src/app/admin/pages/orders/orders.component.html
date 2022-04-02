@@ -1,0 +1,101 @@
+<div class="card mb-4 mt-5 mb-5" >
+    <div class="card-header color"  >
+        <i class="fas fa-table me-1" style="font-size: 24px;" ><span class="h3 ms-2">Orders</span></i>
+        
+    </div>
+    <div class="card-body "  >
+        <div class="text-primary">
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onAddOrders()">
+                <h5 class="mt-2">Add Orders</h5>
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+                    <div class="modal-content text-dark bg bg-success">
+                        <div class="modal-header">
+                            <h4 class="modal-title text-success" id="exampleModalLabel" >{{title}}</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                            
+                            <div>
+                                <label for="tuasach" class="h6">Tựa sách</label>
+                                <input type="text" #tuasach="ngModel" [(ngModel)]="orders.book_title" name="tuasach" id="tuasach" class="form-control input_style mb-2" required placeholder="Nhập tên sách">
+                                <div class="alert alert-danger" *ngIf="tuasach.invalid &&(tuasach.dirty||tuasach.touched)" >  
+                                    <strong *ngIf="form.submitted||tuasach.touched || tuasach.dirty && tuasach.errors?.['required']">Please enter your book title</strong>
+                                </div>
+                                
+
+                                <label for="customerName" class="h6">Tên khách hàng</label>
+                                <input type="text" #customerName="ngModel" [(ngModel)]="orders.customerName" name="customerName"  id="customerName" class="form-control input_style mb-2" required placeholder="Nhập tên khách hàng">
+                                <div class="alert alert-danger" *ngIf=" customerName.invalid &&(customerName.dirty||customerName.touched||customerName.value)" >  
+                                    <strong *ngIf="form.submitted||customerName.touched || customerName.dirty && customerName.errors?.['required']">Please enter customer name</strong>
+                                </div>
+
+                                <label for="quantity" class="h6">Số lượng</label>
+                                <input type="number" [(ngModel)]="orders.quantity" name="quantity" id="quantity" #quantity="ngModel" class="form-control mb-2 input_style" required placeholder="Nhập tên loại">
+                                <div class="alert alert-danger" *ngIf="quantity.invalid &&(quantity.dirty||quantity.touched)" >  
+                                    <strong *ngIf="form.submitted||quantity.touched || quantity.dirty && quantity.errors?.['required']">Please enter quantity</strong>
+                                </div>
+
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-save mt-3 mb-3 h6" type="submit" data-bs-dismiss="modal">Save Orders</button>
+                                <button type="button" class="btn btn-cancel mt-3 ms-2 mb-3 h6 " data-bs-dismiss="modal">Cancel</button>
+                            
+                            </div>
+                        </form>
+
+                        </div>
+                        <!-- <div class="modal-footer">
+                            
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="table-responsive ">
+            <table class="table table-lg text-center color" >
+                <thead>
+                    <tr>
+                        <th scope="col">Stt</th>
+                        <th scope="col">Tựa sách</th>
+                        <th scope="col">Tên khách hàng</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Ngày nhập</th>
+                        <th scope="col">Cập nhật</th>
+                        <th scope="col">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr *ngFor="let item of data ; let i=index" appHighlight>
+                        <td>{{i+1}}</td>
+                        <td style="text-transform:capitalize;">{{item.book_title}}</td>
+                        <td style="text-transform:capitalize;">{{item.customerName}}</td>
+                        
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.created_at | date:'MMM d, y, h:mm:ss a'}}</td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-up" data-bs-toggle="modal" (click)="onEditOrders(item.id)" data-bs-target="#exampleModal">
+                                Update
+                            </button>               
+                            
+                        </td>
+                        <td>
+                            <button class="btn btn-danger h6 btn-remove" (click)="delOrders(item.id)"> Remove </button>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>

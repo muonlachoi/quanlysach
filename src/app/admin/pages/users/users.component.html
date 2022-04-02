@@ -1,0 +1,105 @@
+<div class="card mb-4 mt-5 mb-5" >
+    <div class="card-header color"  >
+        <i class="fas fa-table me-1" style="font-size: 24px;" ><span class="h3 ms-2">Customers</span></i>
+        
+    </div>
+    <div class="card-body "  >
+         <div class="text-primary">
+            
+            <!-- Modal -->
+            <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+                    <div class="modal-content text-dark bg bg-success">
+                        <div class="modal-header">
+                            <h4 class="modal-title text-success" id="exampleModalLabel" >Update Customer</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                            
+                            <div>
+                                <label for="name" class="h6">Customer Name</label>
+                                <input type="text" #name="ngModel" [(ngModel)]="users.name" name="name" id="name" class="form-control input_style mb-2" required placeholder="Nhập tên của bạn">
+                                <div class="alert alert-danger" *ngIf="name.invalid &&(name.dirty||name.touched)" >  
+                                    <strong *ngIf="form.submitted||name.touched || name.dirty && name.errors?.['required']">Please enter your name</strong>
+                                </div>
+                            
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-save mt-3 mb-3 h6" type="submit" data-bs-dismiss="modal">Save Name</button>
+                                <button type="button" class="btn btn-cancel mt-3 ms-2 mb-3 h6 " data-bs-dismiss="modal">Cancel</button>
+                            
+                            </div>
+                        </form>
+
+                        </div>
+                        <!-- <div class="modal-footer">
+                            
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="table-responsive">
+            <table class="table color table-lg text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Stt</th>
+                        <th scope="col">Tên người dùng</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Mật khẩu</th>
+                        <!-- <th scope="col">Ảnh</th> -->
+                        <th scope="col">Ngày đăng ký</th>
+                        
+                        <th scope="col">Cập nhật</th>
+                        <th scope="col">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <?php $stt=1; ?>
+                    @foreach($hanghoa as $item) -->
+                    <tr *ngFor="let item of data ; let i=index" appHighlight>
+                        <td>{{i+1}}</td>
+                        <td style="text-transform:capitalize;">{{item.name}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.password}}</td>
+                        <!-- <td ><img src="{{}}" style="height:50px; width:50px; object-fit:cover; overflow:hidden;" alt=""></td> -->
+                        <td>{{item.created_at | date:'MMM d, y, h:mm:ss a'}}</td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-up" data-bs-toggle="modal" (click)="onEditUser(item.id)" data-bs-target="#exampleModal">
+                                Update
+                            </button>               
+                            
+                        </td>
+                        <td>
+                            <button class="btn btn-danger h6 btn-remove" (click)="delUser(item.id)"> Remove </button>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+  <!-- <nav aria-label="Page navigation example">
+    <ul class="pagination pagination-sm">
+      <li class="page-item">
+        <a class="page-link" (click)="prevPage()">
+          <span aria-hidden="true">Previous</span>
+        </a>
+      </li> -->
+      <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+      
+      <!-- <li class="page-item" [ngClass]="{disabled:currentPage==totalPage}">
+        <a class="page-link" (click)="nextPage()">
+          <span aria-hidden="true">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+   -->

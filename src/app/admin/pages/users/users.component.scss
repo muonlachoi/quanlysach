@@ -1,0 +1,104 @@
+.alert-danger {
+    border-radius: 10px;;
+    font-size: 12px;
+    margin-top: 5px;
+    padding: 10px;
+}
+.input_style {
+    padding: 8px;
+    border-radius: 10px;
+    color: rgb(8, 41, 39);
+    background-color: rgb(208, 238, 212);
+    transition: all 0.2s linear;
+    &::-webkit-input-placeholder {
+        color: black;
+    }
+    &:focus {
+        border-color: rgb(12, 74, 78);
+        box-shadow: 0 0 0 2px #72ddbd;
+    }
+}
+input[type="number"]::-webkit-inner-spin-button{
+    margin: 0;
+    -webkit-appearance: none;
+}
+label{
+    color: rgb(18, 88, 77);
+}
+.btn {
+    margin: 10px 0px;
+    border-radius: 15px;
+    border: 0;
+    color: white;
+    background: linear-gradient(180deg, #4aa886 0%, #00ffa1 100%);
+    cursor: pointer;
+    transition: all 0.15s linear;
+    
+    box-shadow: 0 4px 0 0 rgb(#062e15, 1);
+    &:hover {
+        background: linear-gradient(180deg, #6dd87f 0%, #09442f 100%);
+        color: #420202;
+    }
+    &:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 0;
+    }
+}
+.btn-remove {
+
+    background: linear-gradient(180deg, #f04540 0%, #ff004c 100%);
+   
+    box-shadow: 0 4px 0 0 rgb(#062e15, 1);
+    &:hover {
+        background: linear-gradient(180deg, #44a3a3 0%, #580a2f 100%);
+        color: #420202;
+    }
+    &:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 0;
+    }
+}
+.btn-up{
+    background: linear-gradient(180deg, #f7ea36 0%, #ec0552 100%);
+   
+    box-shadow: 0 4px 0 0 rgb(#062e15, 1);
+    &:hover {
+        background: linear-gradient(180deg, #58f1f1 0%, #491c0b 100%);
+        color: #420202;
+    }
+    &:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 0;
+    }
+}
+.btn-cancel{
+    background: linear-gradient(180deg, #53534c 0%, #22181c 100%);
+   
+    box-shadow: 0 4px 0 0 rgb(#062e15, 1);
+    &:hover {
+        background: linear-gradient(180deg, #324b4b 0%, #093021 100%);
+        color: #ca346e;
+    }
+    &:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 0;
+    }
+}
+.btn-save{
+    background: linear-gradient(180deg, #21a56e 0%, #ec0552 100%);
+   
+    box-shadow: 0 4px 0 0 rgb(#062e15, 1);
+    &:hover {
+        background: linear-gradient(180deg, #1facac 0%, #64e4b5 100%);
+        color: #420202;
+    }
+    &:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 0;
+    }
+}
+.table-responsive{
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}

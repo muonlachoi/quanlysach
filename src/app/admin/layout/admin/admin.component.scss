@@ -1,0 +1,18 @@
+
+main{
+    min-height: 100%;
+    position: relative;
+    
+}
+.bg-primary{
+    background:linear-gradient(180deg, #53917b 20%, #0EB177 100%);
+}
+.bg-success{
+    background:linear-gradient(180deg,	#33FF99 0%, #0EB177 100%);
+}
+a:active{
+    background-color: #0EB177;
+}
+.color{
+    color:#055348;
+}

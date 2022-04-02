@@ -1,0 +1,29 @@
+<div class="signin container mb-5">
+    <div class="signin_content">
+        <h1 class="signin_heading text-center">Login</h1>
+        <form class="signin-form" #formLogin="ngForm" (submit)="onSubmit(formLogin)">
+            <div class="signin_form_group">
+                <label for="email" class="signin_form_lable"><h6>Email</h6></label>
+                <input #email="ngModel" required type="email" id="email" name="email" [(ngModel)]="users.email"  class="signin_form_input input_style" placeholder="Enter your email">
+
+                <div class="alert alert-danger" *ngIf="email.invalid &&(formLogin.submitted||email.dirty||email.touched)" >  
+                    <strong *ngIf="formLogin.submitted||email.touched || email.dirty && email.errors?.['required']">Please enter your email</strong>
+                </div>
+            </div>
+            <div class="signin_form_group">
+                <label for="pass" class="signin_form_lable"><h6>Password</h6></label>
+                <input type="password" id="pass" name="password" [(ngModel)]="users.password" #pass="ngModel" required  class="signin_form_input input_style" placeholder="Enter your password">
+                <div class="alert alert-danger" *ngIf="pass.invalid &&(formLogin.submitted||pass.dirty||
+                pass.touched)" >  
+                    <strong *ngIf="formLogin.submitted||pass.touched || pass.dirty && pass.errors?.['required']">Please enter your password</strong>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button class="signin_form_button" type="submit" >
+                    <h5>Login</h5>
+                </button>
+            </div>
+            <p class="signin_already">Bạn chưa có tài khoản?<a [routerLink]="['/register']" class="ms-2 h6">Sign Up</a></p>
+        </form>
+    </div>
+</div>
